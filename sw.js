@@ -1,7 +1,8 @@
-const CACHE_NAME = "nlp-meditation-trainer-21-v6";
+const CACHE_NAME = "nlp-meditation-trainer-21-v7";
 const ASSETS = [
   "./",
   "./index.html",
+  "./generator.js",
   "./manifest.webmanifest",
   "./icons/meditation-icon.png",
   "./icons/apple-touch-icon.png",
