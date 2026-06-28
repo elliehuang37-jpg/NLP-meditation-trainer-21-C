@@ -1,4 +1,4 @@
-const CACHE_NAME = "nlp-meditation-trainer-21-v5";
+const CACHE_NAME = "nlp-meditation-trainer-21-v6";
 const ASSETS = [
   "./",
   "./index.html",
