@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f49a28">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="冥想引導21天">
+  <title>NLP 培訓師冥想引導能力 21 天自我練習器</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/meditation-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <style>
+    :root {
+      --sun: #f49a28;
+      --sun-soft: #ffd27a;
+      --river: #087c8c;
+      --river-deep: #075362;
+      --pine: #1e5244;
+      --leaf: #79943b;
+      --cream: #fff8e8;
+      --cloud: #fffdf5;
+      --sand: #d9a257;
+      --ink: #233333;
+      --muted: #64716f;
+      --line: rgba(35, 51, 51, .14);
+      --shadow: 0 16px 36px rgba(21, 67, 70, .13);
+      --radius: 18px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(180deg, rgba(255, 210, 122, .2), transparent 22rem),
+        linear-gradient(135deg, #fff8e8 0%, #eef8f5 48%, #fffdf5 100%);
+      color: var(--ink);
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .app {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      min-height: 100vh;
+      background: rgba(255, 253, 245, .78);
+      box-shadow: 0 0 70px rgba(7, 83, 98, .09);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(7, 83, 98, .12), rgba(7, 83, 98, .72)),
+        url("./assets/sun-cloud-header.png") center center / cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -55px -8%;
+      height: 120px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 340px;
+      display: grid;
+      align-content: space-between;
+      gap: 26px;
+      padding: max(18px, env(safe-area-inset-top)) 18px 54px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 253, 245, .9);
+      box-shadow: 0 12px 24px rgba(7, 83, 98, .2);
+      flex: 0 0 auto;
+    }
+    .brand-mark img {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      object-fit: cover;
+      display: block;
+    }
+    .brand-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+      text-shadow: 0 2px 12px rgba(3, 46, 54, .32);
+    }
+    .brand-subtitle {
+      margin: 2px 0 0;
+      font-size: 12px;
+      opacity: .9;
+    }
+    .install-btn {
+      border: 1px solid rgba(255, 255, 255, .48);
+      background: rgba(255, 253, 245, .2);
+      color: #fff;
+      min-height: 40px;
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+      font-weight: 900;
+      backdrop-filter: blur(12px);
+      white-space: nowrap;
+    }
+    .install-btn[hidden] { display: none; }
+    .hero-copy {
+      max-width: 700px;
+      text-shadow: 0 8px 26px rgba(3, 46, 54, .36);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 248, 232, .2);
+      border: 1px solid rgba(255, 255, 255, .42);
+      font-size: 12px;
+      font-weight: 900;
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      margin: 12px 0 10px;
+      max-width: 720px;
+      font-size: clamp(31px, 6.2vw, 56px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .hero-copy p {
+      width: min(100%, 590px);
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.78;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 640px;
+      margin-top: 18px;
+    }
+    .stat {
+      min-width: 0;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 253, 245, .2);
+      border: 1px solid rgba(255, 255, 255, .35);
+      backdrop-filter: blur(12px);
+    }
+    .stat strong { display: block; font-size: 24px; line-height: 1; }
+    .stat span { display: block; margin-top: 6px; font-size: 12px; opacity: .92; }
+
+    main {
+      position: relative;
+      z-index: 2;
+      padding: 0 16px 90px;
+    }
+    .dashboard {
+      transform: translateY(-24px);
+      margin-bottom: -8px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .panel, .card {
+      background: rgba(255, 253, 245, .94);
+      border: 1px solid rgba(255, 255, 255, .76);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 15px; }
+    .progress-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .progress-head h2 { margin: 0; font-size: 17px; }
+    .progress-text {
+      color: var(--river-deep);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .progress-bar {
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(8, 124, 140, .12);
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--river), var(--leaf), var(--sun));
+      transition: width .25s ease;
+    }
+    .phase-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 13px;
+    }
+    .phase-pill {
+      min-width: 0;
+      padding: 10px;
+      border-radius: 14px;
+      background: #f3fbf8;
+      border: 1px solid rgba(8, 124, 140, .13);
+    }
+    .phase-pill strong { display: block; color: var(--river-deep); font-size: 13px; }
+    .phase-pill span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px 0 12px;
+      background: linear-gradient(180deg, rgba(255, 248, 232, .98), rgba(255, 248, 232, .86));
+      backdrop-filter: blur(12px);
+    }
+    .tab {
+      min-height: 42px;
+      min-width: 0;
+      border: 1px solid rgba(35, 51, 51, .12);
+      border-radius: 999px;
+      background: rgba(255, 253, 245, .9);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+    .tab.active {
+      color: #fff;
+      background: var(--river-deep);
+      border-color: var(--river-deep);
+      box-shadow: 0 12px 22px rgba(7, 83, 98, .18);
+    }
+    .view { display: none; }
+    .view.active { display: block; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr);
+      gap: 14px;
+      align-items: start;
+    }
+    .card { padding: 16px; margin: 0 0 14px; }
+    .card.soft { background: linear-gradient(180deg, rgba(255, 253, 245, .96), rgba(239, 248, 245, .92)); }
+    .card h2, .card h3 { margin: 0; letter-spacing: 0; }
+    .card h2 { font-size: 22px; line-height: 1.25; }
+    .card h3 { font-size: 17px; }
+    .muted { color: var(--muted); line-height: 1.7; }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #e9f7f5;
+      color: var(--river-deep);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .day-switcher {
+      display: grid;
+      grid-template-columns: 46px 1fr 46px;
+      gap: 9px;
+      margin: 0 0 12px;
+      align-items: center;
+    }
+    .day-select, select, input[type="text"], textarea, input[type="range"] {
+      width: 100%;
+      min-width: 0;
+    }
+    .day-select, select, input[type="text"], textarea {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .86);
+      color: var(--ink);
+      outline: none;
+    }
+    .day-select, select, input[type="text"] { min-height: 44px; padding: 0 12px; font-weight: 800; }
+    textarea { min-height: 92px; padding: 12px; line-height: 1.58; resize: vertical; }
+    textarea:focus, select:focus, input[type="text"]:focus {
+      border-color: rgba(8, 124, 140, .6);
+      box-shadow: 0 0 0 4px rgba(8, 124, 140, .12);
+    }
+    .btn {
+      min-height: 44px;
+      min-width: 0;
+      border: 0;
+      border-radius: 14px;
+      padding: 9px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #eaf6f3;
+      color: var(--river-deep);
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+    .btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .btn.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--river-deep), var(--river));
+      box-shadow: 0 12px 22px rgba(8, 124, 140, .18);
+    }
+    .btn.sun {
+      color: #4c3210;
+      background: linear-gradient(135deg, var(--sun-soft), var(--sun));
+    }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 13px; }
+    .full { grid-column: 1 / -1; }
+
+    .focus-list, .check-list, .script-list {
+      display: grid;
+      gap: 9px;
+      padding: 0;
+      margin: 13px 0 0;
+      list-style: none;
+    }
+    .focus-list li, .script-list li {
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(8, 124, 140, .12);
+      line-height: 1.58;
+      color: var(--ink);
+    }
+    .check-list label {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .74);
+      border: 1px solid rgba(8, 124, 140, .12);
+      line-height: 1.55;
+    }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--river);
+      margin-top: 2px;
+    }
+    .rubric {
+      display: grid;
+      gap: 12px;
+      margin-top: 13px;
+    }
+    .rubric label {
+      display: grid;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .range-line {
+      display: grid;
+      grid-template-columns: 1fr 34px;
+      align-items: center;
+      gap: 10px;
+      color: var(--river-deep);
+    }
+    input[type="range"] { accent-color: var(--sun); }
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-top: 13px;
+    }
+    .field label {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .quote {
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff2cf;
+      border: 1px solid rgba(244, 154, 40, .28);
+      color: #684615;
+      line-height: 1.68;
+      font-weight: 700;
+    }
+    .script-output {
+      white-space: pre-wrap;
+      min-height: 260px;
+      padding: 15px;
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(255, 253, 245, .92), rgba(255, 242, 207, .72));
+      border: 1px solid rgba(244, 154, 40, .22);
+      line-height: 1.75;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .library-item {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 253, 245, .9);
+      border: 1px solid var(--line);
+    }
+    .library-item strong { display: block; color: var(--river-deep); margin-bottom: 7px; }
+    .library-item p { margin: 0; color: var(--muted); line-height: 1.62; font-size: 13px; }
+    .journal-list { display: grid; gap: 10px; }
+    .journal-item {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 253, 245, .92);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--river);
+    }
+    .journal-item h3 { margin: 0 0 8px; font-size: 16px; }
+    .journal-item p { margin: 5px 0; color: var(--muted); line-height: 1.58; font-size: 13px; }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      width: min(calc(100% - 28px), 460px);
+      transform: translateX(-50%) translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 30;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(35, 51, 51, .94);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (min-width: 1180px) {
+      body { padding: 28px 0; }
+      .app { border-radius: 32px; overflow: hidden; min-height: calc(100vh - 56px); }
+      .tabs { top: 28px; }
+    }
+    @media (max-width: 820px) {
+      .dashboard, .grid-2 { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .phase-row { grid-template-columns: 1fr; }
+      .library-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 430px) {
+      .hero-inner { min-height: 390px; }
+      .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .actions { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      main { padding-left: 12px; padding-right: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">
+              <img src="./assets/brand-mark.png" alt="">
+            </div>
+            <div>
+              <p class="brand-title">NLP Meditation Trainer</p>
+              <p class="brand-subtitle">21 天培訓師自我練習器</p>
+            </div>
+          </div>
+          <button id="installBtn" class="install-btn" type="button" hidden>安裝 App</button>
+        </div>
+
+        <div class="hero-copy">
+          <span class="eyebrow">米爾頓模式 · COACH State · 引導語調</span>
+          <h1>培訓師冥想引導能力 21 天自我練習器</h1>
+          <p>以參考文件中的 NLP 冥想引導流程為底稿，訓練培訓師在課前穩定自身狀態、設計引導語、控制聲音節奏，並把學員帶入安全、放鬆、可學習的內在狀態。</p>
+          <div class="hero-stats" aria-label="訓練總覽">
+            <div class="stat"><strong>21</strong><span>天自我訓練</span></div>
+            <div class="stat"><strong>4</strong><span>引導階段</span></div>
+            <div class="stat"><strong>5</strong><span>核心能力</span></div>
+            <div class="stat"><strong id="heroDone">0</strong><span>已完成</span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="dashboard">
+        <div class="panel" aria-label="訓練進度">
+          <div class="progress-head">
+            <h2>21 天進度</h2>
+            <span id="progressText" class="progress-text">0 / 21</span>
+          </div>
+          <div class="progress-bar" aria-hidden="true"><div id="progressFill" class="progress-fill"></div></div>
+          <div class="phase-row">
+            <div class="phase-pill"><strong>Day 1-7</strong><span>狀態與聲音</span></div>
+            <div class="phase-pill"><strong>Day 8-14</strong><span>語言與深化</span></div>
+            <div class="phase-pill"><strong>Day 15-21</strong><span>整合與實戰</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <span class="label">今日主軸</span>
+          <h2 id="todayFocus" style="margin:10px 0 6px;font-size:22px;">建立引導者狀態</h2>
+          <p id="todayMicro" class="muted" style="margin:0;">先讓自己成為穩定場域，再開始帶領學員。</p>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="主要功能">
+        <button class="tab active" data-view="practice" type="button">今日練習</button>
+        <button class="tab" data-view="generator" type="button">引導詞生成</button>
+        <button class="tab" data-view="skills" type="button">能力地圖</button>
+        <button class="tab" data-view="journal" type="button">訓練紀錄</button>
+      </nav>
+
+      <section id="practice" class="view active">
+        <div class="grid-2">
+          <div>
+            <div class="day-switcher">
+              <button id="prevDay" class="btn" type="button" aria-label="前一天">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <select id="daySelect" class="day-select" aria-label="選擇訓練天數"></select>
+              <button id="nextDay" class="btn" type="button" aria-label="後一天">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+
+            <article class="card soft">
+              <span id="dayPhase" class="label">Day 1</span>
+              <h2 id="dayTitle" style="margin-top:10px;">建立 COACH 狀態</h2>
+              <p id="dayPurpose" class="muted"></p>
+              <div id="dayQuote" class="quote"></div>
+              <ul id="dayFocusList" class="focus-list"></ul>
+            </article>
+
+            <article class="card">
+              <h3>今日刻意練習</h3>
+              <ul id="checkList" class="check-list"></ul>
+              <div class="actions">
+                <button id="saveBtn" class="btn" type="button">儲存紀錄</button>
+                <button id="completeBtn" class="btn primary" type="button">標記完成</button>
+              </div>
+            </article>
+          </div>
+
+          <aside>
+            <article class="card">
+              <h3>能力自評</h3>
+              <div class="rubric">
+                <label>
+                  <span>聲音穩定度</span>
+                  <span class="range-line"><input id="voiceScore" type="range" min="1" max="5" value="3"><strong id="voiceScoreText">3</strong></span>
+                </label>
+                <label>
+                  <span>語言流暢度</span>
+                  <span class="range-line"><input id="languageScore" type="range" min="1" max="5" value="3"><strong id="languageScoreText">3</strong></span>
+                </label>
+                <label>
+                  <span>安全場域感</span>
+                  <span class="range-line"><input id="safetyScore" type="range" min="1" max="5" value="3"><strong id="safetyScoreText">3</strong></span>
+                </label>
+              </div>
+              <div class="field">
+                <label for="practiceNote">今日觀察</label>
+                <textarea id="practiceNote" placeholder="例：語速太快，停頓還不夠；學員閉眼後我也更穩定了。"></textarea>
+              </div>
+              <div class="field">
+                <label for="nextAdjustment">明日調整</label>
+                <textarea id="nextAdjustment" placeholder="例：每句引導後多留 2 秒，聲音落在腹部。"></textarea>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="generator" class="view">
+        <div class="grid-2">
+          <article class="card soft">
+            <h2>冥想引導詞生成器</h2>
+            <div class="field">
+              <label for="sessionGoal">本次冥想目標</label>
+              <select id="sessionGoal">
+                <option value="紓壓與放鬆">紓壓與放鬆</option>
+                <option value="課前專注與學習狀態">課前專注與學習狀態</option>
+                <option value="自信與內在資源">自信與內在資源</option>
+                <option value="情緒整理與轉化">情緒整理與轉化</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="audience">學員情境</label>
+              <input id="audience" type="text" value="企業內訓學員，剛結束忙碌工作，需要進入學習狀態">
+            </div>
+            <div class="field">
+              <label for="metaphor">自然隱喻</label>
+              <select id="metaphor">
+                <option value="河流">河流</option>
+                <option value="森林">森林</option>
+                <option value="晨光">晨光</option>
+                <option value="山徑">山徑</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="duration">引導長度</label>
+              <select id="duration">
+                <option value="3">3 分鐘</option>
+                <option value="5" selected>5 分鐘</option>
+                <option value="8">8 分鐘</option>
+              </select>
+            </div>
+            <div class="actions">
+              <button id="generateBtn" class="btn primary" type="button">生成引導詞</button>
+              <button id="copyScriptBtn" class="btn sun" type="button">複製引導詞</button>
+            </div>
+          </article>
+          <article class="card">
+            <span class="label">輸出稿</span>
+            <div id="scriptOutput" class="script-output"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="view">
+        <article class="card soft">
+          <h2>培訓師冥想引導能力地圖</h2>
+          <p class="muted">21 天訓練會反覆累積五個能力：先穩定自己，再用語言帶出安全、放鬆、內在資源與回到現實的力量。</p>
+        </article>
+        <div id="libraryGrid" class="library-grid"></div>
+      </section>
+
+      <section id="journal" class="view">
+        <article class="card">
+          <h2>訓練紀錄</h2>
+          <p class="muted">所有紀錄會保存在這台裝置的瀏覽器中。</p>
+          <div class="actions">
+            <button id="copyJournalBtn" class="btn primary" type="button">複製全部紀錄</button>
+            <button id="resetBtn" class="btn" type="button">清除紀錄</button>
+          </div>
+        </article>
+        <div id="journalList" class="journal-list"></div>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const days = [
+      { phase: "基礎狀態", title: "建立 COACH 狀態", purpose: "讓培訓師先成為穩定、開放、專注、連結與包容的場域。", quote: "先讓自己的呼吸變慢，學員才會信任你帶出的節奏。", focus: ["腹式呼吸 3 分鐘，吐氣比吸氣長。", "用低沉、平緩、有節奏的聲音說 10 句話。", "錄音後聽一次：聲音是否穩、慢、柔、清楚。"] },
+      { phase: "基礎狀態", title: "身體與環境同步", purpose: "練習以真實感知開場，降低學員防衛心。", quote: "你正坐在椅子上，聽著我的聲音，而呼吸正在一點一點回到身體。", focus: ["寫出 5 句環境同步句。", "加入椅子觸感、空氣、聲音、呼吸。", "避免急著要求放鬆，先描述當下。"] },
+      { phase: "基礎狀態", title: "催眠語調與停頓", purpose: "建立聲音節奏，讓停頓成為引導的一部分。", quote: "每一句話後的留白，都是讓學員內在經驗浮現的空間。", focus: ["每句話後停 2 秒。", "將語速調到平常的一半。", "練習句尾往下收，不用上揚催促。"] },
+      { phase: "基礎狀態", title: "名詞化語言", purpose: "使用放鬆、智慧、平靜等抽象詞，讓學員自行填補意義。", quote: "我不知道那份平靜對你而言是一種顏色、一種溫度，還是一種很熟悉的感覺。", focus: ["列出 12 個可用在冥想的抽象資源詞。", "每個詞延伸成一句模糊引導。", "確認語句不強迫學員有固定畫面。"] },
+      { phase: "基礎狀態", title: "同步與引導", purpose: "先 pacing 當下，再 leading 到目標狀態。", quote: "你可以聽見我的聲音，也可以感覺呼吸，而隨著每次吐氣，身體正在更容易安定。", focus: ["寫 3 組『當下事實 + 放鬆方向』。", "錄音時前半句同步，後半句引導。", "檢查語氣是否像邀請，而不是命令。"] },
+      { phase: "基礎狀態", title: "安全場域開場", purpose: "讓學員知道可以依自己的節奏參與。", quote: "你可以閉上眼，也可以微微垂下視線，用最適合自己的方式參與。", focus: ["設計 30 秒安全聲明。", "加入自主權、可調整姿勢、可停止練習。", "用穩定語氣說出，不過度解釋。"] },
+      { phase: "基礎狀態", title: "一週整合錄音", purpose: "完成 3 分鐘開場引導稿並錄音。", quote: "培訓師的穩定，不是表演出來，而是練出來。", focus: ["整合 COACH、同步、語調、停頓。", "錄製 3 分鐘版本。", "用自評表找出下週最需要加強的一項。"] },
+      { phase: "語言深化", title: "次感官畫面調整", purpose: "引導學員將壓力畫面變暗、縮小、拉遠。", quote: "那個壓力的畫面可以慢慢變小，像一顆小石頭，被推到遠方的水平線。", focus: ["寫出視覺調整：亮度、大小、距離。", "加上聲音變小或變遠。", "避免要求學員一定要看見畫面。"] },
+      { phase: "語言深化", title: "資源畫面放大", purpose: "將安全、平靜、自信的內在資源放大。", quote: "讓那份舒服的感覺，像晨光一樣，慢慢從胸口擴散到整個身體。", focus: ["選一個資源詞：平靜、自信、清明。", "設計顏色、溫度、位置、擴散方向。", "錄一段 90 秒資源放大引導。"] },
+      { phase: "語言深化", title: "心錨設定", purpose: "將深層平靜與身體動作連結。", quote: "當你輕輕捏住大拇指與食指，身體會記得這份穩定。", focus: ["設計心錨動作說明。", "安排心錨設定與放開的時機。", "加入未來啟動心錨的情境。"] },
+      { phase: "語言深化", title: "倒數深化", purpose: "用 10 到 1 的倒數協助學員進入更深層的放鬆。", quote: "每一個數字，都像走下一階柔和的階梯，越來越安靜，也越來越清楚。", focus: ["寫 10 句倒數深化語。", "每 2 個數字加入一次身體感受。", "錄音檢查節奏是否過快。"] },
+      { phase: "語言深化", title: "隱喻故事", purpose: "用自然意象引導潛意識對話。", quote: "你可以想像自己坐在一條安靜的河邊，水面帶走不需要再握住的重量。", focus: ["選擇河流、森林、晨光或山徑。", "寫出場景、轉化、帶回資源三段。", "保留足夠模糊空間給學員。"] },
+      { phase: "語言深化", title: "未來投影", purpose: "把冥想中的資源帶到明天、下週與真實挑戰。", quote: "未來的你在面對挑戰時，仍然能以這份平靜做出更好的選擇。", focus: ["寫 3 個未來情境。", "引導學員看見自己的表情、姿態、行動。", "讓心錨在未來情境中被啟動。"] },
+      { phase: "語言深化", title: "二週整合腳本", purpose: "完成 5 分鐘完整引導稿。", quote: "一段好的引導，不是話多，而是每一句都有方向。", focus: ["整合開場、深化、心錨、未來投影。", "標記停頓位置。", "錄音並檢查四階段是否清楚。"] },
+      { phase: "實戰整合", title: "課前學習狀態引導", purpose: "把冥想用於企業內訓或工作坊開場。", quote: "讓忙碌先放在門外，讓注意力回到接下來要學習的能力。", focus: ["設計 3 分鐘課前版本。", "語言聚焦清明、好奇、學習意願。", "喚醒時轉為明亮有活力。"] },
+      { phase: "實戰整合", title: "壓力釋放引導", purpose: "帶學員處理緊繃、焦慮或疲憊。", quote: "不需要推開壓力，只要讓身體知道，現在可以先放下一點點。", focus: ["先同步壓力感，再引導距離與重量變化。", "避免承諾療癒結果。", "最後帶回現實行動與自我照顧。"] },
+      { phase: "實戰整合", title: "自信資源引導", purpose: "協助學員連結過去成功經驗與內在力量。", quote: "讓身體記得你曾經做到過的那一刻，並把那份力量帶回現在。", focus: ["引導回想一個成功經驗。", "放大姿態、呼吸、眼神與聲音。", "設定一個可在課後使用的心錨。"] },
+      { phase: "實戰整合", title: "時間線視角", purpose: "以抽離觀點整理內在阻礙。", quote: "你可以像站在時間線上方，看見過去的自己，也帶著現在的智慧陪伴他。", focus: ["用第三人稱與安全距離描述。", "不碰觸過深創傷內容。", "聚焦學習、理解與新的選擇。"] },
+      { phase: "實戰整合", title: "現場觀察與調整", purpose: "依學員呼吸、表情、姿勢調整語速與深度。", quote: "好的引導者不是照稿念完，而是看見場域正在發生什麼。", focus: ["觀察學員呼吸與肩頸放鬆度。", "吐氣時說出放鬆、沉重、舒服。", "若現場不安，退回環境同步。"] },
+      { phase: "實戰整合", title: "8 分鐘正式帶領", purpose: "完成可用於課堂的正式版冥想引導。", quote: "聲音越穩，語言越少，學員越容易回到自己。", focus: ["帶領一位朋友或同事試聽。", "請對方回饋安全感、節奏、清醒度。", "依回饋修改腳本。"] },
+      { phase: "實戰整合", title: "個人引導風格定稿", purpose: "建立可持續迭代的培訓師冥想引導模板。", quote: "你的引導風格，是穩定、語言、意圖與真誠共同形成的專業能力。", focus: ["定稿 3 分鐘、5 分鐘、8 分鐘版本。", "寫下自己的引導原則。", "規劃下一輪 21 天精進目標。"] }
+    ];
+
+    const skills = [
+      { title: "COACH State", text: "Centered、Open、Attentive、Connected、Holding。先穩定培訓師自身狀態，再開始引導學員。" },
+      { title: "米爾頓模式", text: "使用模糊、開放、允許式語言，讓學員依自己的內在經驗完成意義。" },
+      { title: "同步與引導", text: "先說出可驗證的當下事實，再溫和帶向放鬆、專注或資源狀態。" },
+      { title: "次感官調整", text: "透過畫面亮度、大小、距離、聲音與身體感，調整壓力與資源的內在編碼。" },
+      { title: "心錨與未來投影", text: "在深層平靜時設定身體動作，並把狀態帶到未來真實情境中。" },
+      { title: "喚醒與收束", text: "用逐漸明亮、清楚、有活力的聲音帶學員回到現實，保留能量而非昏沉。" }
+    ];
+
+    const storageKey = "nlpMeditationTrainer21.v1";
+    const $ = (id) => document.getElementById(id);
+    let state = loadState();
+    let currentDay = Math.min(Math.max(state.currentDay || 1, 1), 21);
+    let deferredPrompt = null;
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(storageKey)) || { entries: {}, completed: [] }; }
+      catch { return { entries: {}, completed: [] }; }
+    }
+    function saveState() { localStorage.setItem(storageKey, JSON.stringify(state)); }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
+    }
+    function showToast(message) {
+      const toast = $("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function renderDayOptions() {
+      $("daySelect").innerHTML = days.map((day, index) => `<option value="${index + 1}">Day ${index + 1}｜${day.title}</option>`).join("");
+    }
+    function renderPractice() {
+      const day = days[currentDay - 1];
+      const entry = state.entries[currentDay] || {};
+      $("daySelect").value = String(currentDay);
+      $("dayPhase").textContent = `Day ${currentDay} · ${day.phase}`;
+      $("dayTitle").textContent = day.title;
+      $("dayPurpose").textContent = day.purpose;
+      $("dayQuote").textContent = day.quote;
+      $("dayFocusList").innerHTML = day.focus.map((item) => `<li>${item}</li>`).join("");
+      $("todayFocus").textContent = day.title;
+      $("todayMicro").textContent = day.purpose;
+      $("checkList").innerHTML = day.focus.map((item, index) => {
+        const checked = entry.checks && entry.checks[index] ? "checked" : "";
+        return `<label><input type="checkbox" data-check="${index}" ${checked}><span>${item}</span></label>`;
+      }).join("");
+      $("voiceScore").value = entry.voiceScore || 3;
+      $("languageScore").value = entry.languageScore || 3;
+      $("safetyScore").value = entry.safetyScore || 3;
+      $("practiceNote").value = entry.practiceNote || "";
+      $("nextAdjustment").value = entry.nextAdjustment || "";
+      $("prevDay").disabled = currentDay === 1;
+      $("nextDay").disabled = currentDay === 21;
+      state.currentDay = currentDay;
+      saveState();
+      renderScores();
+      renderProgress();
+    }
+    function renderScores() {
+      $("voiceScoreText").textContent = $("voiceScore").value;
+      $("languageScoreText").textContent = $("languageScore").value;
+      $("safetyScoreText").textContent = $("safetyScore").value;
+    }
+    function renderProgress() {
+      const completed = new Set(state.completed || []);
+      const count = completed.size;
+      $("progressText").textContent = `${count} / 21`;
+      $("progressFill").style.width = `${Math.round((count / 21) * 100)}%`;
+      $("heroDone").textContent = count;
+      $("completeBtn").textContent = completed.has(currentDay) ? "今日已完成" : "標記完成";
+    }
+    function getEntryFromForm() {
+      const checks = {};
+      document.querySelectorAll("[data-check]").forEach((item) => { checks[item.dataset.check] = item.checked; });
+      return {
+        checks,
+        voiceScore: Number($("voiceScore").value),
+        languageScore: Number($("languageScore").value),
+        safetyScore: Number($("safetyScore").value),
+        practiceNote: $("practiceNote").value.trim(),
+        nextAdjustment: $("nextAdjustment").value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+    }
+    function saveEntry() {
+      state.entries[currentDay] = getEntryFromForm();
+      saveState();
+      renderJournal();
+      showToast("已儲存今日練習紀錄");
+    }
+    function completeDay() {
+      saveEntry();
+      const completed = new Set(state.completed || []);
+      completed.add(currentDay);
+      state.completed = Array.from(completed).sort((a, b) => a - b);
+      saveState();
+      renderProgress();
+      showToast(`Day ${currentDay} 已完成`);
+    }
+    function renderSkills() {
+      $("libraryGrid").innerHTML = skills.map((item) => `
+        <article class="library-item">
+          <strong>${item.title}</strong>
+          <p>${item.text}</p>
+        </article>
+      `).join("");
+    }
+    function buildScript() {
+      const goal = $("sessionGoal").value;
+      const audience = $("audience").value.trim() || "學員";
+      const metaphor = $("metaphor").value;
+      const duration = $("duration").value;
+      const scene = {
+        "河流": "一條安靜流動的河，水面把不需要再握住的重量慢慢帶走",
+        "森林": "一座溫柔安靜的森林，樹影讓呼吸自然變深",
+        "晨光": "一片慢慢升起的晨光，照亮身體裡原本就有的清明",
+        "山徑": "一條穩定向前的山徑，每一步都讓你更靠近內在力量"
+      }[metaphor];
+      const loops = duration === "3" ? "簡短停頓" : duration === "5" ? "停頓 2 到 3 秒" : "停頓 4 到 5 秒";
+      const script = `【${goal}｜${duration} 分鐘 NLP 冥想引導詞】\n\n第一階段：身體與環境同步\n很好，現在請用最舒服的姿勢坐好。你可以閉上眼，也可以微微垂下視線。你正坐在這裡，聽見我的聲音，也感覺到身體被椅子穩穩承接。${loops}。\n\n把注意力帶到呼吸。吸氣，感覺空氣進入身體；吐氣，讓肩膀多放鬆一點。你不需要努力做到什麼，只要允許自己用最適合的方式，慢慢回到當下。\n\n第二階段：語言堆疊與次感官深化\n對 ${audience} 來說，也許現在有些忙碌、壓力或尚未整理的念頭。你可以在心裡看見它，然後讓那個畫面慢慢變小、變淡、變遠，像一顆小石頭，被推到遠方的水平線。${loops}。\n\n現在，想像自己來到${scene}。看一看那裡的光線，聽一聽周圍的聲音，感覺身體裡那份名為平靜、清楚或力量的感受，正在以最自然的速度擴散。\n\n第三階段：心錨設定與資源連結\n當你感覺到一點點穩定，請輕輕捏住右手的大拇指與食指。讓身體記住這份狀態。未來當你再次做出這個動作，身體會更容易想起此刻的呼吸、平靜與選擇。\n\n第四階段：未來投影與喚醒\n帶著這份狀態，想像未來的你面對下一個真實情境。你看見自己的表情更穩，聲音更清楚，行動也更有選擇。很好，現在我會從 1 數到 3。1，感覺手腳回到身體；2，做一個深呼吸；3，帶著清醒與能量回到當下。歡迎回來。`;
+      $("scriptOutput").textContent = script;
+    }
+    function copyScript() {
+      const text = $("scriptOutput").textContent.trim();
+      if (!text) { showToast("請先生成引導詞"); return; }
+      navigator.clipboard.writeText(text).then(() => showToast("已複製引導詞"));
+    }
+    function renderJournal() {
+      const entries = Object.entries(state.entries || {})
+        .map(([day, entry]) => ({ day: Number(day), ...entry }))
+        .sort((a, b) => a.day - b.day)
+        .filter((entry) => entry.practiceNote || entry.nextAdjustment || (state.completed || []).includes(entry.day));
+      if (!entries.length) {
+        $("journalList").innerHTML = `<article class="card"><p class="muted" style="margin:0;">尚未建立紀錄。完成今日練習後，這裡會整理你的聲音、語言、安全感自評與明日調整。</p></article>`;
+        return;
+      }
+      $("journalList").innerHTML = entries.map((entry) => {
+        const day = days[entry.day - 1];
+        return `
+          <article class="journal-item">
+            <h3>Day ${entry.day}｜${day.title}</h3>
+            <p><strong>自評：</strong>聲音 ${entry.voiceScore || "-"}｜語言 ${entry.languageScore || "-"}｜安全感 ${entry.safetyScore || "-"}</p>
+            <p><strong>今日觀察：</strong>${escapeHtml(entry.practiceNote || "未填寫")}</p>
+            <p><strong>明日調整：</strong>${escapeHtml(entry.nextAdjustment || "未填寫")}</p>
+          </article>
+        `;
+      }).join("");
+    }
+    function copyJournal() {
+      const entries = Object.entries(state.entries || {})
+        .map(([day, entry]) => ({ day: Number(day), ...entry }))
+        .sort((a, b) => a.day - b.day);
+      if (!entries.length) { showToast("目前沒有可複製的紀錄"); return; }
+      const text = entries.map((entry) => {
+        const day = days[entry.day - 1];
+        return `Day ${entry.day}｜${day.title}\n聲音 ${entry.voiceScore || "-"}｜語言 ${entry.languageScore || "-"}｜安全感 ${entry.safetyScore || "-"}\n今日觀察：${entry.practiceNote || ""}\n明日調整：${entry.nextAdjustment || ""}`;
+      }).join("\n\n");
+      navigator.clipboard.writeText(text).then(() => showToast("已複製全部訓練紀錄"));
+    }
+    function bindEvents() {
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+          document.querySelectorAll(".view").forEach((view) => view.classList.toggle("active", view.id === tab.dataset.view));
+          if (tab.dataset.view === "journal") renderJournal();
+        });
+      });
+      $("daySelect").addEventListener("change", () => { currentDay = Number($("daySelect").value); renderPractice(); });
+      $("prevDay").addEventListener("click", () => { if (currentDay > 1) { currentDay -= 1; renderPractice(); } });
+      $("nextDay").addEventListener("click", () => { if (currentDay < 21) { currentDay += 1; renderPractice(); } });
+      ["voiceScore", "languageScore", "safetyScore"].forEach((id) => $(id).addEventListener("input", renderScores));
+      $("saveBtn").addEventListener("click", saveEntry);
+      $("completeBtn").addEventListener("click", completeDay);
+      $("generateBtn").addEventListener("click", buildScript);
+      $("copyScriptBtn").addEventListener("click", copyScript);
+      $("copyJournalBtn").addEventListener("click", copyJournal);
+      $("resetBtn").addEventListener("click", () => {
+        if (!confirm("確定要清除這台裝置上的 21 天訓練紀錄？")) return;
+        state = { entries: {}, completed: [], currentDay: 1 };
+        currentDay = 1;
+        saveState();
+        renderPractice();
+        renderJournal();
+        showToast("紀錄已清除");
+      });
+    }
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      $("installBtn").hidden = false;
+    });
+    $("installBtn").addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      $("installBtn").hidden = true;
+    });
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+    }
+
+    renderDayOptions();
+    bindEvents();
+    renderPractice();
+    renderSkills();
+    buildScript();
+    renderJournal();
+  </script>
+</body>
+</html>

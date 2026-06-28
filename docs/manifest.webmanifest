@@ -1,0 +1,26 @@
+{
+  "name": "NLP 培訓師冥想引導能力 21 天自我練習器",
+  "short_name": "冥想引導21天",
+  "description": "幫助 NLP 培訓師練習 COACH State、米爾頓模式、同步引導、次感官調整、心錨與未來投影的互動式 PWA。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff8e8",
+  "theme_color": "#f49a28",
+  "lang": "zh-Hant-TW",
+  "icons": [
+    {
+      "src": "./icons/meditation-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
