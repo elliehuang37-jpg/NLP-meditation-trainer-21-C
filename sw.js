@@ -1,4 +1,4 @@
-const CACHE_NAME = "nlp-meditation-trainer-21-v7";
+const CACHE_NAME = "nlp-meditation-trainer-21-v8";
 const ASSETS = [
   "./",
   "./index.html",
@@ -36,3 +36,4 @@ self.addEventListener("fetch", (event) => {
     )
   );
 });
+

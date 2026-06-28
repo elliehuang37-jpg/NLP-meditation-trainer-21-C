@@ -817,7 +817,11 @@
       `).join("");
     }
     function buildScript() {
-      $("scriptOutput").textContent = "引導詞生成器載入中，請稍候再試。";
+      const day = days[currentDay - 1];
+      const goal = $("sessionGoal").value;
+      const audience = $("audience").value.trim() || "學員";
+      const duration = $("duration").value;
+      $("scriptOutput").textContent = `【Day ${currentDay}｜${day.title}｜${goal}｜${duration} 分鐘 NLP 冥想引導詞】\n\n請先讓自己坐穩，感覺雙腳與地面的接觸，也聽見此刻我的聲音。\n\n對${audience}來說，現在可以暫時把外在任務放在旁邊，讓注意力回到呼吸、身體與當下。\n\n吸氣，感覺身體有更多空間；吐氣，讓肩膀與下顎慢慢放鬆。讓這份狀態支持今天的練習主軸：${goal}。\n\n當你準備好，可以輕輕做一個深呼吸，把穩定、清明與選擇帶回身體。`;
     }
     function copyScript() {
       const text = $("scriptOutput").textContent.trim();
@@ -870,7 +874,10 @@
       ["voiceScore", "languageScore", "safetyScore"].forEach((id) => $(id).addEventListener("input", renderScores));
       $("saveBtn").addEventListener("click", saveEntry);
       $("completeBtn").addEventListener("click", completeDay);
-      $("generateBtn").addEventListener("click", buildScript);
+      $("generateBtn").addEventListener("click", () => buildScript());
+      ["sessionGoal", "audience", "metaphor", "duration"].forEach((id) => {
+        $(id).addEventListener(id === "audience" ? "input" : "change", () => buildScript());
+      });
       $("copyScriptBtn").addEventListener("click", copyScript);
       $("copyJournalBtn").addEventListener("click", copyJournal);
       $("resetBtn").addEventListener("click", () => {
